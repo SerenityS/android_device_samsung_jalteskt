@@ -60,7 +60,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AudioWorkaround \
     audio.a2dp.default \
-    audio.primary.universal5410 \
+#    audio.primary.universal5410 \
     audio.r_submix.default \
     audio.usb.default \
     tinymix
@@ -195,8 +195,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libsamsung_symbols \
-    libsecril-client \
-    libsecril-client-sap \
+#    libsecril-client \
+#    libsecril-client-sap \
     SamsungServiceMode \
     modemloader
 
