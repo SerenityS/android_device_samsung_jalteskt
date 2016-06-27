@@ -22,8 +22,8 @@ LOCAL_PATH := device/samsung/jalteskt
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Boot Animation
-TARGET_SCREEN_HEIGHT := 960
-TARGET_SCREEN_WIDTH := 540
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -90,12 +90,8 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     libion \
-    libfimg
-
-# GearCM
-PRODUCT_PACKAGES += \
+    libfimg \
     AdvancedDisplay \
-    OTAUpdates
 
 # GPS
 PRODUCT_PACKAGES += \
