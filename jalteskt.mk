@@ -55,7 +55,10 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/audio/tinyucm.conf:system/etc/tinyucm.conf \
+    $(LOCAL_PATH)/configs/audio/ymc_debug.sh:system/etc/ymc_debug.sh \
+    $(LOCAL_PATH)/configs/audio/ysound.xml:system/etc/ysound.xml
 
 PRODUCT_PACKAGES += \
     AudioWorkaround \
