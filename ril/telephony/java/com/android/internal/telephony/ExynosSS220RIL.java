@@ -38,7 +38,7 @@ import java.util.Collections;
  *
  * {@hide}
  */
-public class ExynosXMM6360RIL extends RIL {
+public class ExynosSS220RIL extends RIL {
 
     /**********************************************************
      * SAMSUNG REQUESTS
@@ -54,11 +54,11 @@ public class ExynosXMM6360RIL extends RIL {
     private static final int RIL_UNSOL_AM = 11010;
     private static final int RIL_UNSOL_SIM_PB_READY = 11021;
 
-    public ExynosXMM6360RIL(Context context, int preferredNetworkType, int cdmaSubscription) {
+    public ExynosSS220RIL(Context context, int preferredNetworkType, int cdmaSubscription) {
         this(context, preferredNetworkType, cdmaSubscription, null);
     }
 
-    public ExynosXMM6360RIL(Context context, int preferredNetworkType,
+    public ExynosSS220RIL(Context context, int preferredNetworkType,
                    int cdmaSubscription, Integer instanceId) {
         super(context, preferredNetworkType, cdmaSubscription, instanceId);
     }
@@ -398,7 +398,7 @@ public class ExynosXMM6360RIL extends RIL {
         }
 
         if (newResponse != origResponse) {
-            riljLog("ExynosXMM6360RIL: remap unsolicited response from " +
+            riljLog("ExynosSS220RIL: remap unsolicited response from " +
                     origResponse + " to " + newResponse);
             p.setDataPosition(dataPosition);
             p.writeInt(newResponse);

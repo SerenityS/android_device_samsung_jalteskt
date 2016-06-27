@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/i9500
+LOCAL_PATH := device/samsung/jalteskt
 
 BOARD_VENDOR := samsung
 
@@ -22,7 +22,7 @@ BOARD_VENDOR := samsung
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := ja3g,ja3gxx,i9500,GT-I9500
+TARGET_OTA_ASSERT_DEVICE := i9500,jalteskt,jaltektt,SHV-E300S,SHV-E300K
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := universal5410
@@ -52,7 +52,7 @@ TARGET_CPU_VARIANT := cortex-a15
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_IGNORE_RO_BOOT_REVISION := true
-TARGET_KERNEL_CONFIG := cyanogenmod_i9500_defconfig
+TARGET_KERNEL_CONFIG := cyanogenmod_jalteskt_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/exynos5410
 
 # ANT+
@@ -87,7 +87,7 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
 
 # CMHW
-BOARD_HARDWARE_CLASS := device/samsung/i9500/cmhw
+BOARD_HARDWARE_CLASS := device/samsung/jalteskt/cmhw
 
 # Exynos5410 Hardware
 BOARD_USE_ANB_OUTBUF_SHARE := true
@@ -140,7 +140,7 @@ BOARD_NFC_HAL_SUFFIX := universal5410
 BOARD_MODEM_TYPE := xmm7260
 BOARD_MODEM_NEEDS_VIDEO_CALL_FIELD := true
 BOARD_PROVIDES_LIBRIL := true
-BOARD_RIL_CLASS := ../../../device/samsung/i9500/ril
+BOARD_RIL_CLASS := ../../../device/samsung/jalteskt/ril
 COMMON_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 # Recovery
@@ -159,7 +159,7 @@ TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
-    device/samsung/i9500/sepolicy
+    device/samsung/jalteskt/sepolicy
 
 # TWRP Specific
 BOARD_HAS_NO_REAL_SDCARD := true

@@ -16,7 +16,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from i9500 device
-$(call inherit-product, device/samsung/i9500/i9500.mk)
+$(call inherit-product, device/samsung/jalteskt/jalteskt.mk)
 
 # Enhanced NFC
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
@@ -24,19 +24,17 @@ $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
-PRODUCT_NAME := cm_i9500
-PRODUCT_DEVICE := i9500
+PRODUCT_NAME := cm_jalteskt
+PRODUCT_DEVICE := jalteskt
 PRODUCT_MANUFACTURER := samsung
-PRODUCT_MODEL := GT-I9500
+PRODUCT_MODEL := SHV-E300S
 
 PRODUCT_BRAND := Samsung
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_MODEL=GT-I9500 \
-    PRODUCT_NAME=ja3gxx \
-    PRODUCT_DEVICE=ja3g \
-    TARGET_DEVICE=ja3g \
+    PRODUCT_MODEL=SHV-E300K \
+    PRODUCT_NAME=jalteskt \
+    PRODUCT_DEVICE=jalte \
+    TARGET_DEVICE=jalte \
     BUILD_FINGERPRINT="samsung/ja3gxx/ja3g:5.0.1/LRX22C/I9500XXUHOL1:user/release-keys" \
     PRIVATE_BUILD_DESC="ja3gxx-user 5.0.1 LRX22C I9500XXUHOL1 release-keys"
-
-TARGET_UNOFFICIAL_BUILD_ID := GearCM

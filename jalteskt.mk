@@ -16,7 +16,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-LOCAL_PATH := device/samsung/i9500
+LOCAL_PATH := device/samsung/jalteskt
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -202,7 +202,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.data.large_tcp_window_size=true \
-    ro.telephony.ril_class=ExynosXMM6360RIL
+    ro.telephony.ril_class=ExynosSS220RIL
 
 # Tethering Config
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -241,4 +241,4 @@ $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalv
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/i9500/i9500-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/jalteskt/jalteskt-vendor.mk)
