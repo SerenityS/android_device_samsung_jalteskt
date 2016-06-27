@@ -1,16 +1,63 @@
-Device configuration for Samsung Galaxy S4 Exynos (GT-I9500)
+Device configuration for the Samsung S4 OCTA (Korean Varients Only)
 
-Copyright 2016, The CyanogenMod Project / GearCM
+Copyright (C) 2014-2016 The CyanogenMod Project
 
-Current build version: WIP
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
 
-Actual Status:
+      http://www.apache.org/licenses/LICENSE-2.0
 
-- Issues with VOIP Calls (due to some standby issue, Audio HAL needs to be fixed)
-- Mixer Paths needs to be entirely reconfigured to get proper audio quality
-- Wi-Fi isn't 100% stable, the issue seems to be on the kernel side
-- Incompatibilities with Snap Camera needs to be fixed (not so important though)
-- Camera isn't 100% stable, there are some issues with ION & v4l2
-- SIM-Card STK Toolkit doesn't work properly, SMSs aren't properly sent (corrupted or something)
-- HDMI Audio isn't 100% stable, sometimes doesn't work, sometimes crashes the device after some minutes
-- SELinux policies aren't ready yet, so the device is running without it until they are properly fixed
+------------------------------------------------------------------
+
+* Description
+
+  This repository is for CM-13.0 on Samsung Galaxy S4 (jalte)
+
+    THIS IS WORK IN PROGRESS.
+
+
+* How To Build CM-13.0 for Samsung Galaxy S4
+
+  - Make a workspace
+
+  $ mkdir -p ~/cyanogenmod/system
+  $ cd ~/cyanogenmod/system
+
+
+  - Do repo init & sync
+
+  $ repo init -u git://github.com/CyanogenMod/android.git -b cm-13.0
+
+
+  - Create .repo/local_manifests/roomservice.xml with the following content:
+
+  <?xml version="1.0" encoding="UTF-8"?>
+  <manifest>
+      <project name="CyanogenMod/android_packages_apps_SamsungServiceMode" path="packages/apps/SamsungServiceMode" remote="github" />
+      <project name="CyanogenMod/android_hardware_samsung" path="hardware/samsung" remote="github" />
+
+      <project name="CyanogenMod/android_hardware_samsung_slsi-cm_exynos" path="hardware/samsung_slsi-cm/exynos" />
+      <project name="CyanogenMod/android_hardware_samsung_slsi-cm_exynos5" path="hardware/samsung_slsi-cm/exynos5" />
+      <project name="SerenityS/android_hardware_samsung_slsi_exynos5410" path="hardware/samsung_slsi-cm/exynos5410" remote="github" />
+
+      <project name="SerenityS/android_kernel_samsung_exynos5410.git" path="kernel/samsung/exynos5410" remote="github" />
+      <project name="SerenityS/android_device_samsung_jalteskt.git" path="device/samsung/jalteskt" remote="github" />
+      <project name="SerenityS/android_vendor_samsung_jalteskt.git" path="vendor/samsung/jalteskt" remote="github" />
+  </manifest>
+
+  $ repo sync
+
+  - Setup environment
+
+  $ source build/envsetup.sh
+  $ lunch cm_jalteskt-userdebug
+
+
+  - Build CM
+
+  $ export USE_CCACHE=1
+  $ make -j10 bacon
+
+----
+EOF
