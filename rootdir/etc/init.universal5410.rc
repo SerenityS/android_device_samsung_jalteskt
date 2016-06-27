@@ -42,16 +42,10 @@ on post-fs
     chmod 0222 /sys/kernel/debug/tracing/trace_marker
     write /sys/kernel/debug/tracing/tracing_on 0
 
-# 4.3 needs this
-    chmod 0644 /proc/cmdline
-
 # Permissions for Touchscreen
     chown system radio /sys/class/sec/tsp/cmd
-    chown system radio /sys/class/sec/tsp/cmd_result
-    chown system radio /sys/class/sec/tsp/cmd_list
-    chmod 0666 /sys/class/sec/tsp/cmd
-    chmod 0666 /sys/class/sec/tsp/cmd_result
-    chmod 0666 /sys/class/sec/tsp/cmd_list
+    chown system system /sys/class/input/input1/enabled
+    chmod 0660 /sys/class/input/input1/enabled
 
 # Permissions for JA3G PowerHAL
     chown system system /sys/class/input/input1/enabled
@@ -76,24 +70,39 @@ on post-fs
     chown system radio /sys/class/sec/sec_touchkey/touchkey_threshold
     chown system radio /sys/class/sec/sec_touchkey/glove_mode
     chown system radio /sys/class/sec/sec_touchkey/flip_mode
-    chown system system /sys/class/sec/sec_touchkey/keypad_enable
-    chmod 0660 /sys/class/sec/sec_touchkey/keypad_enable
-
+    chown system radio /sys/class/sec/sec_touchkey/boost_level
     chown system system /sys/devices/virtual/sec/sec_touchkey/brightness
+
+    chown system system /sys/class/input/input13/enabled
+    chmod 0660 /sys/class/input/input13/enabled
+    chown system system /sys/class/input/input15/enabled
+    chmod 0660 /sys/class/input/input15/enabled
+    chown system system /sys/class/input/input16/enabled
+    chmod 0660 /sys/class/input/input16/enabled
+    chown system system /sys/class/input/input17/enabled
+    chmod 0660 /sys/class/input/input17/enabled
+    chown system system /sys/class/input/input18/enabled
+    chmod 0660 /sys/class/input/input18/enabled
+    chown system system /sys/class/input/input19/enabled
+    chmod 0660 /sys/class/input/input19/enabled
 
 # Permissions for GPIO Keys
     chown radio system /sys/class/sec/sec_key/wakeup_keys
-    write /sys/class/sec/sec_key/wakeup_keys 114,115,116,172
+    write /sys/class/sec/sec_key/wakeup_keys 116,172
 
-# Permissions for Sensors
-# Accelerometer
+# Permissions for backlight
+    chmod 0660 /sys/class/backlight/pwm-backlight.0/brightness
+    chown system system /sys/class/backlight/pwm-backlight.0/brightness
+
+# SENSORS
+# Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/raw_data
     chown system radio /sys/class/sensors/accelerometer_sensor/calibration
     chown system radio /sys/class/sensors/accelerometer_sensor/reactive_alert
     chown system radio /sys/class/sensors/accelerometer_sensor/vendor
     chown system radio /sys/class/sensors/accelerometer_sensor/name
     chown system radio /sys/class/sensors/accelerometer_sensor/selftest
-# Proximity
+# Proximity_sensor
     chown system radio /sys/class/sensors/proximity_sensor/state
     chown system radio /sys/class/sensors/proximity_sensor/raw_data
     chown system radio /sys/class/sensors/proximity_sensor/prox_avg
@@ -103,12 +112,12 @@ on post-fs
     chown system radio /sys/class/sensors/proximity_sensor/thresh_high
     chown system radio /sys/class/sensors/proximity_sensor/thresh_low
     chown system radio /sys/class/sensors/proximity_sensor/barcode_emul_en
-# Light
+# Light_sensor
     chown system radio /sys/class/sensors/light_sensor/lux
     chown system radio /sys/class/sensors/light_sensor/raw_data
     chown system radio /sys/class/sensors/light_sensor/vendor
     chown system radio /sys/class/sensors/light_sensor/name
-# Gyroscope
+# Gyro_sensor
     chown system radio /sys/class/sensors/gyro_sensor/power_on
     chown system radio /sys/class/sensors/gyro_sensor/power_off
     chown system radio /sys/class/sensors/gyro_sensor/temperature
@@ -116,27 +125,29 @@ on post-fs
     chown system radio /sys/class/sensors/gyro_sensor/selftest_dps
     chown system radio /sys/class/sensors/gyro_sensor/vendor
     chown system radio /sys/class/sensors/gyro_sensor/name
-# Barometer
+# Barometer_sensor
     chown system radio /sys/class/sensors/barometer_sensor/sea_level_pressure
     chown system radio /sys/class/sensors/barometer_sensor/vendor
     chown system radio /sys/class/sensors/barometer_sensor/name
     chown system radio /sys/class/sensors/barometer_sensor/calibration
-# Magnetic
+# Magnetic_sensor
+    chown system radio /dev/akm8963
     chown system radio /sys/class/sensors/magnetic_sensor/raw_data
     chown system radio /sys/class/sensors/magnetic_sensor/vendor
     chown system radio /sys/class/sensors/magnetic_sensor/name
-# Gesture
+# gesture_sensor
     chown system radio /sys/class/sensors/gesture_sensor/vendor
     chown system radio /sys/class/sensors/gesture_sensor/name
     chown system radio /sys/class/sensors/gesture_sensor/raw_data
     chown system radio /sys/class/sensors/gesture_sensor/ir_current
     chown system radio /sys/class/sensors/gesture_sensor/selftest
-# Temperature & Humidity
+# Temphumidity_sensor
     chown system radio /sys/class/sensors/temphumidity_sensor/vendor
     chown system radio /sys/class/sensors/temphumidity_sensor/name
     chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver
     chown system radio /sys/class/sensors/temphumidity_sensor/engine_ver2
     chown system radio /sys/class/sensors/temphumidity_sensor/send_accuracy
+
 # SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
     chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
@@ -147,32 +158,27 @@ on post-fs
     chown system radio /sys/class/sensors/ssp_sensor/mcu_sleep_test
     chown system radio /sys/class/sensors/ssp_sensor/ori_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/mag_poll_delay
+    chown system radio /sys/class/sensors/ssp_sensor/ssp_flush
+    chown system radio /sys/class/sensors/ssp_sensor/meta_device
 
-# Permissions for Infrared Led
-    chown system system /sys/class/sec/sec_ir/check_ir
-    chown system system /sys/class/sec/sec_ir/ir_send_result
-    chown system system /sys/class/sec/sec_ir/ir_send
-    chown system system /sys/class/sec/sec_ir/irda_test
-    chmod 0660 /sys/class/sec/sec_ir/check_ir
-    chmod 0660 /sys/class/sec/sec_ir/ir_send_result
-    chmod 0660 /sys/class/sec/sec_ir/ir_send
-    chmod 0660 /sys/class/sec/sec_ir/irda_test
+# IR_LED
+    chown system radio /sys/class/sec/sec_ir/ir_send
+    chown system radio /sys/class/sec/sec_ir/ir_send_result
 
-# Permissions for Barcode Emulator
+# Permissions for Barcode Emul
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_send
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_ver_check
     chown system radio /sys/class/sec/sec_barcode_emul/barcode_led_status
 
-# Permissions for Camera
+# Permissions Camera
     chown system radio /sys/class/camera/rear/rear_camfw
     chown system radio /sys/class/camera/rear/rear_camtype
-
     chown system radio /sys/class/camera/flash/rear_flash
-
+#    chown system radio /sys/class/camera/rear/isp_core
     chown system radio /sys/class/camera/front/front_camfw
     chown system radio /sys/class/camera/front/front_camtype
 
-# Permissions for LEDs
+# SVC LED
     chown system system /sys/class/sec/led/led_r
     chown system system /sys/class/sec/led/led_g
     chown system system /sys/class/sec/led/led_b
@@ -180,15 +186,12 @@ on post-fs
     chown system system /sys/class/leds/led_r/brightness
     chown system system /sys/class/leds/led_g/brightness
     chown system system /sys/class/leds/led_b/brightness
-
     chown system system /sys/class/leds/led_r/delay_on
     chown system system /sys/class/leds/led_g/delay_on
     chown system system /sys/class/leds/led_b/delay_on
-
     chown system system /sys/class/leds/led_r/delay_off
     chown system system /sys/class/leds/led_g/delay_off
     chown system system /sys/class/leds/led_b/delay_off
-
     chown system system /sys/class/leds/led_r/blink
     chown system system /sys/class/leds/led_g/blink
     chown system system /sys/class/leds/led_b/blink
@@ -202,108 +205,86 @@ on post-fs
     chown system radio /sys/class/host_notify/usb_otg/booster
     chmod 0660 /sys/class/host_notify/usb_otg/booster
 
-# Permissions for Samsung GPIO Checks
+# GPIO DVS
     chown radio system /sys/class/secgpio_check/secgpio_check_all/gpioinit_check
     chown radio system /sys/class/secgpio_check/secgpio_check_all/gpiosleep_check
     chown radio system /sys/class/secgpio_check/secgpio_check_all/checked_sleepGPIO
 
-# Permissions for CPU DVFS
+# PMS DVFS
     chown radio system /sys/power/cpufreq_table
     chown radio system /sys/power/cpufreq_max_limit
     chown radio system /sys/power/cpufreq_min_limit
     chmod 0660 /sys/power/cpufreq_table
     chmod 0660 /sys/power/cpufreq_max_limit
     chmod 0660 /sys/power/cpufreq_min_limit
-
-# Permissions for Exynos 5 Bus Frequency Monitoring 
     chown radio system /sys/class/devfreq/exynos5-busfreq-mif/en_monitoring
     chown radio system /sys/class/devfreq/exynos5-busfreq-int/en_monitoring
     chmod 0664 /sys/class/devfreq/exynos5-busfreq-mif/en_monitoring
     chmod 0664 /sys/class/devfreq/exynos5-busfreq-int/en_monitoring
 
-# Permissions for GPU DVFS
+# SSRM
+    chown radio system /sys/class/lcd/panel/siop_enable
+    chown radio system /sys/class/graphics/fb0/lcdfreq/level
     chown radio system /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock
     chown radio system /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock
     chown radio system /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_table
-    chmod 0660 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock
-    chmod 0660 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock
-    chmod 0660 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_table
-
-# Permissions for Exynos 5 BUS
     chown radio system /sys/class/devfreq/exynos5-busfreq-mif/min_freq
     chown radio system /sys/class/devfreq/exynos5-busfreq-mif/max_freq
     chown radio system /sys/class/devfreq/exynos5-busfreq-mif/freq_table
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/game_mode
+    chmod 0660 /sys/class/lcd/panel/siop_enable
+    chmod 0660 /sys/class/graphics/fb0/lcdfreq/level
+    chmod 0660 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock
+    chmod 0660 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock
+    chmod 0660 /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_table
     chmod 0660 /sys/class/devfreq/exynos5-busfreq-mif/min_freq
     chmod 0660 /sys/class/devfreq/exynos5-busfreq-mif/max_freq
     chmod 0660 /sys/class/devfreq/exynos5-busfreq-mif/freq_table
-
-# Permissions for Ondemand CPU Governor
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boost_mode
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/conservative_step
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/cpu_utilization
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/down_step_level
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/high_freq_zone
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/max_freq_blank
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/power_save_bias
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate_min
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_conservative_mod
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_b
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_l
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_l
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/boost_mode
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/conservative_step
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/cpu_utilization
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/down_step_level
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/high_freq_zone
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/ignore_nice_load
     chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/max_freq_blank
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/power_save_bias
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate_min
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_conservative_mod
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_b
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_l
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
-    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_l
+    chmod 0660 /sys/devices/system/cpu/cpufreq/ondemand/game_mode
 
-# Permissions for Core Control
+# Ondemand
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_h
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/high_freq_zone
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/high_freq_zone
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/conservative_step
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/conservative_step
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_conservative_mode
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_conservative_mode
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_l
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_l
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_l
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_l
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_b
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_step_level_b
+    chown radio system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+    chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+
+# Core Control
     chown radio system /dev/b.L_operator
-    chown radio system /dev/bL_status
     chmod 0660 /dev/b.L_operator
+    chown radio system /dev/bL_status
     chmod 0660 /dev/bL_status
-
-# Permissions for AMOLED Color Adjustment
-    chown radio system /sys/class/power_supply/battery/temp
-    chmod 0664 /sys/class/power_supply/battery/temp
-
-    chown radio system /sys/class/lcd/panel/temperature
-    chmod 0664 /sys/class/lcd/panel/temperature
-
-# Permissions for CPU Idle
     chown radio system /sys/devices/system/cpu/cpu0/cpuidle/state1/disable
     chown radio system /sys/devices/system/cpu/cpu1/cpuidle/state1/disable
     chown radio system /sys/devices/system/cpu/cpu2/cpuidle/state1/disable
     chown radio system /sys/devices/system/cpu/cpu3/cpuidle/state1/disable
-    chown system radio /sys/devices/system/cpu/cpu0/cpuidle/state2/disable
     chmod 0660 /sys/devices/system/cpu/cpu0/cpuidle/state1/disable
     chmod 0660 /sys/devices/system/cpu/cpu1/cpuidle/state1/disable
     chmod 0660 /sys/devices/system/cpu/cpu2/cpuidle/state1/disable
     chmod 0660 /sys/devices/system/cpu/cpu3/cpuidle/state1/disable
 
-    chown system radio /sys/module/cpuidle/parameters/enable_mask
-
-    chown system radio /sys/module/asv_exynos/parameters/asv_group
+# AMOLED Color Adjustment
+    chown radio system /sys/class/power_supply/battery/temp
+    chown radio system /sys/class/lcd/panel/temperature
+    chmod 0664 /sys/class/power_supply/battery/temp
+    chmod 0664 /sys/class/lcd/panel/temperature
 
 # Permissions for Terminal Mode
     chown system system /sys/class/android_usb/android0/terminal_version
@@ -315,21 +296,18 @@ on post-fs
     chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
     chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
 
-# Permissions for Screen Backlight
+# Permissions for backlight
     chown system system /sys/class/backlight/panel/brightness
     chown system system /sys/class/backlight/panel/auto_brightness
 
-# Permissions for AMOLED Screen
+# Permissions for LCD
     chown system radio /sys/class/lcd/panel/lcd_type
     chown system media_rw /sys/class/lcd/panel/power_reduce
     chown system system /sys/class/lcd/panel/siop_enable
-    chown system system /sys/class/lcd/panel/temperature
-    chmod 0660 /sys/class/lcd/panel/siop_enable
-
     chown system system /sys/class/graphics/fb0/lcdfreq/level
-    chmod 0660 /sys/class/graphics/fb0/lcdfreq/level
+    chown system system /sys/class/lcd/panel/temperature
 
-# Permissions for MDNIe
+# Permissions for MDNIE
     chown system system /sys/class/mdnie/mdnie/mode
     chown system media_rw /sys/class/mdnie/mdnie/scenario
     chown system system /sys/class/mdnie/mdnie/accessibility
@@ -342,42 +320,19 @@ on post-fs
     chmod 0666 /sys/class/mhl/timing
     chmod 0666 /sys/class/mhl/swing
 
-# Permissions for Switch Device
-    chown system radio /sys/class/sec/switch/uart_sel
-    chown system radio /sys/class/sec/switch/usb_sel
+# Switch Device
     chown system radio /sys/class/sec/switch/usb_state
     chown system radio /sys/class/sec/switch/chg_type
-    chown system radio /sys/class/sec/switch/otg_test
-    chown system radio /sys/class/sec/switch/adc
-    chown system radio /sys/class/sec/switch/apo_factory
 
-# Permissions for Audio Earjack
+# Audio (Earjack)
     chown system radio /sys/class/audio/earjack/select_jack
     chown system radio /sys/class/audio/earjack/key_state
     chown system radio /sys/class/audio/earjack/state
 
-# Permissions for Audio 2 MIC (Audience)
-# global switch for voice processing effects
-    chown root audio /sys/class/2mic/es325/voice_processing
-    chmod 0660 /sys/class/2mic/es325/voice_processing
-# voice processing chip sleep
-    chown root audio /sys/class/2mic/es325/sleep
-    chmod 0660 /sys/class/2mic/es325/sleep
-# voice processing usecase preset
-    chown root audio /sys/class/2mic/es325/preset
-    chmod 0660 /sys/class/2mic/es325/preset
-# voice processing noise suppression level
-    chown root audio /sys/class/2mic/es325/tx_ns_level
-    chmod 0660 /sys/class/2mic/es325/tx_ns_level
-# voice processing AGC enable (TX)
-    chown root audio /sys/class/2mic/es325/tx_agc_enable
-    chmod 0660 /sys/class/2mic/es325/tx_agc_enable
-# voice processing AEC enable
-    chown root audio /sys/class/2mic/es325/aec_enable
-    chmod 0660 /sys/class/2mic/es325/aec_enable
-# voice processing equalizer
-    chown root audio /sys/class/2mic/es325/veq
-    chmod 0660 /sys/class/2mic/es325/veq
+# Audio 2 MIC (Audience)
+    chown media audio /sys/class/2mic/es325/preset
+    chown media audio /sys/class/2mic/es325/sleep
+    chown media audio /sys/class/2mic/es325/veq
 
 # Permissions for GPS
     chown root system /sys/class/sec/gps/GPS_PWR_EN/value
@@ -500,11 +455,6 @@ on boot
     rm /data/smd_started
     rm /data/sv_cno.info
 
-# GearCM Tweaks (from Perseus)
-    write /proc/sys/kernel/randomize_va_space 0
-    write /sys/class/devfreq/exynos5-busfreq-mif/polling_interval 50
-    write /sys/class/devfreq/exynos5-busfreq-mif/time_in_state/upthreshold 70
-
 # Acceptable values while booting
     write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_min_lock 177
     write /sys/devices/platform/pvrsrvkm.0/sgx_dvfs_max_lock 266
@@ -580,20 +530,13 @@ service pvrsrvctl /system/bin/pvrsrvctl
     group root
     oneshot
 
-# GearCM Initialization
-#service gearinit /sbin/gearinit.sh
-#    class core
-#    user root
-#    group root
-#    oneshot
-
 # Parse hardware revision (needs to happen before cbd starts)
 service modemloader /system/bin/modemloader
     class core
     oneshot
 
 # CBD Radio Daemon
-service cpboot-daemon /system/bin/cbd -d -t xmm626 -b h -m h -p 13
+service cpboot-daemon /system/bin/cbd -d -t ss222 -b s -m c -p 13
     class main
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw log shell
