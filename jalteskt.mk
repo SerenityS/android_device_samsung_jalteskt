@@ -63,10 +63,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     AudioWorkaround \
     audio.a2dp.default \
-#    audio.primary.universal5410 \
     audio.r_submix.default \
     audio.usb.default \
     tinymix
+#    audio.primary.universal5410
 
 PRODUCT_PROPERTY_OVERRIDES += \
     af.fast_track_multiplier=1 \
@@ -194,10 +194,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libsamsung_symbols \
-#    libsecril-client \
-#    libsecril-client-sap \
     SamsungServiceMode \
     modemloader
+#    libsecril-client \
+#    libsecril-client-sap \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.data.large_tcp_window_size=true \
