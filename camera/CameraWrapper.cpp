@@ -64,6 +64,8 @@ camera_module_t HAL_MODULE_INFO_SYM = {
     .set_callbacks = NULL, /* remove compilation warnings */
     .get_vendor_tag_ops = NULL, /* remove compilation warnings */
     .open_legacy = NULL, /* remove compilation warnings */
+    .set_torch_mode = NULL, /* remove compilation warnings */ 
+    .init = NULL, /* remove compilation warnings */ 
     .reserved = {0}, /* remove compilation warnings */
 };
 
@@ -95,7 +97,7 @@ static int check_vendor_module()
     return rv;
 }
 
-static char *camera_fixup_getparams(int id, const char *settings)
+static char *camera_fixup_getparams(int __attribute__((unused)), const char *settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
