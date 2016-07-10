@@ -1,0 +1,2 @@
+allow system_app kernel:system module_request;
+allow system_app sensorhubservice:binder call;
