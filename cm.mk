@@ -32,9 +32,9 @@ PRODUCT_MODEL := SHV-E300S
 PRODUCT_BRAND := Samsung
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_MODEL=SHV-E300K \
+    PRODUCT_MODEL=SHV-E300S \
     PRODUCT_NAME=jalteskt \
-    PRODUCT_DEVICE=jalte \
+    PRODUCT_DEVICE=jalteskt \
     TARGET_DEVICE=jalte \
-    BUILD_FINGERPRINT="samsung/ja3gxx/ja3g:5.0.1/LRX22C/I9500XXUHOL1:user/release-keys" \
-    PRIVATE_BUILD_DESC="ja3gxx-user 5.0.1 LRX22C I9500XXUHOL1 release-keys"
+    BUILD_FINGERPRINT="samsung/jalteskt/jalteskt:5.0.1/LRX22C/E300SKSUGPE2:user/release-keys" \
+    PRIVATE_BUILD_DESC="jalteskt-user 5.0.1 LRX22C E300SKSUGPE2 release-keys"
