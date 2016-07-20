@@ -39,6 +39,7 @@ Copyright (C) 2014-2016 The CyanogenMod Project
 
       <project name="CyanogenMod/android_hardware_samsung_slsi-cm_exynos" path="hardware/samsung_slsi-cm/exynos" />
       <project name="CyanogenMod/android_hardware_samsung_slsi-cm_exynos5" path="hardware/samsung_slsi-cm/exynos5" />
+      <project name="CyanogenMod/android_hardware_samsung_slsi-cm_openmax" path="hardware/samsung_slsi-cm/openmax" />
       <project name="SerenityS/android_hardware_samsung_slsi_exynos5410" path="hardware/samsung_slsi-cm/exynos5410" remote="github" />
 
       <project name="SerenityS/android_kernel_samsung_exynos5410.git" path="kernel/samsung/exynos5410" remote="github" />
