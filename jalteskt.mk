@@ -242,6 +242,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # call Samsung LSI board support package
 $(call inherit-product, hardware/samsung_slsi-cm/exynos5/exynos5.mk)
+$(call inherit-product, hardware/samsung_slsi-cm/exynos/Android.mk)
+$(call inherit-product, hardware/samsung_slsi-cm/exynos5410/Android.mk)
 
 # call dalvik heap config
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
