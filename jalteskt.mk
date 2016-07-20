@@ -206,8 +206,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libsamsung_symbols \
-    SamsungServiceMode \
-    modemloader
+    SamsungServiceMode
+#    modemloader
 #    libsecril-client \
 #    libsecril-client-sap \
 
@@ -235,8 +235,7 @@ PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    wifiloader
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
