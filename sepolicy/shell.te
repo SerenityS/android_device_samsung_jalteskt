@@ -1,2 +1,4 @@
+# FIXME neverallow rule
+# allow shell gps_device:chr_file { read write };
+
 allow shell gps_device:chr_file { getattr ioctl };
-allow shell kernel:system module_request;
