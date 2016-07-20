@@ -2,7 +2,7 @@ import init.universal5410.usb.rc
 import init.universal5410.wifi.rc
 
 on init
-    export LD_SHIM_LIBS "/system/lib/libexynoscamera.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so:/system/lib/libsec-ril.so|libsamsung_symbols.so"
+    export LD_SHIM_LIBS "/system/lib/libexynoscamera.so|libsamsung_symbols.so:/system/lib/omx/libOMX.Exynos.AVC.Encoder.so|libsamsung_symbols.so:/system/bin/gpsd|libdmitry.so:/system/lib/libsec-ril.so|libsamsung_symbols.so:/system/lib/libril.so|libsamsung_symbols.so"
 
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
