@@ -213,7 +213,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.data.large_tcp_window_size=true \
-    ro.telephony.ril_class=ExynosXMM6360RIL
+    ro.telephony.ril_class=SS222RIL
 
 # Tethering Config
 PRODUCT_PROPERTY_OVERRIDES += \
