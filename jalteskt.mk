@@ -87,8 +87,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 
-PRODUCT_PACKAGES += \
-    camera.universal5410
+#RODUCT_PACKAGES += \
+#    camera.universal5410
 
 PRODUCT_PROPERTY_OVERRIDES += \
     camera.qcom.misc.disable=1
