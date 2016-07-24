@@ -34,8 +34,10 @@ Copyright (C) 2014-2016 The CyanogenMod Project
 
   <?xml version="1.0" encoding="UTF-8"?>
   <manifest>
-      <project name="CyanogenMod/android_packages_apps_SamsungServiceMode" path="packages/apps/SamsungServiceMode" remote="github" />
-      <project name="CyanogenMod/android_hardware_samsung" path="hardware/samsung" remote="github" />
+      <project name="CyanogenMod/android_external_stlport" path="external/stlport" />
+
+      <project name="CyanogenMod/android_packages_apps_SamsungServiceMode" path="packages/apps/SamsungServiceMode" />
+      <project name="CyanogenMod/android_hardware_samsung" path="hardware/samsung" />
 
       <project name="CyanogenMod/android_hardware_samsung_slsi-cm_exynos" path="hardware/samsung_slsi-cm/exynos" />
       <project name="CyanogenMod/android_hardware_samsung_slsi-cm_exynos5" path="hardware/samsung_slsi-cm/exynos5" />
