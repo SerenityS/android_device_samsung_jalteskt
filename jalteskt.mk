@@ -96,6 +96,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     libhwjpeg
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.d/50camera:system/etc/init.d/50camera \
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
